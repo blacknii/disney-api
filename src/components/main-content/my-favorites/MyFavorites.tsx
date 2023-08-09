@@ -1,12 +1,9 @@
 import { Typography, Stack } from "@mui/material";
 
-import { useCharactersData } from "../../../hooks/useCharactersData";
 import { Character } from "../../../shared/character.model";
 import Card from "../../UI/Card";
 
-const MyFavorites = () => {
-  const characters = useCharactersData();
-
+const MyFavorites = ({ characters }: { characters: Character[] }) => {
   return (
     <Stack
       sx={{
@@ -22,7 +19,7 @@ const MyFavorites = () => {
         sx={{ flexWrap: "wrap", justifyContent: "center" }}
       >
         {characters.map((character: Character) => (
-          <Card character={character} />
+          <Card key={character.id} character={character} />
         ))}
       </Stack>
     </Stack>

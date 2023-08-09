@@ -5,7 +5,6 @@ import { Character } from "../../shared/character.model";
 const Cart = ({ character }: { character: Character }) => {
   return (
     <Card
-      key={character.id}
       sx={{
         width: 250,
         margin: 2,

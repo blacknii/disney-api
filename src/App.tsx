@@ -6,8 +6,11 @@ import Header from "./components/Header";
 import Home from "./components/main-content/home/Home";
 import MyFavorites from "./components/main-content/my-favorites/MyFavorites";
 import Error from "./components/main-content/Error";
+import { useCharactersData } from "./hooks/useCharactersData";
+import { Character } from "./shared/character.model";
 
 function App() {
+  const characters: Character[] = useCharactersData();
   return (
     <BrowserRouter>
       <CssBaseline />
@@ -28,8 +31,11 @@ function App() {
           }}
         >
           <Routes>
-            <Route index element={<Home />} />
-            <Route path="favorites" element={<MyFavorites />} />
+            <Route index element={<Home characters={characters} />} />
+            <Route
+              path="favorites"
+              element={<MyFavorites characters={characters} />}
+            />
             <Route path="*" element={<Error />} />
           </Routes>
         </Box>
