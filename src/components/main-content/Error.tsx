@@ -2,7 +2,12 @@ import { Typography, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 const Error = () => {
   return (
-    <Stack textAlign="center">
+    <Stack
+      sx={{
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Typography variant="h5">ERROR 404</Typography>
       <Typography variant="h6">
         go back to{" "}
