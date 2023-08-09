@@ -1,10 +1,12 @@
-import { Typography } from "@mui/material";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
-    <Typography variant="h2" component="h1">
-      Footer
-    </Typography>
+    <AppBar sx={{ position: "static", alignItems: "center" }}>
+      <Toolbar>
+        <Typography component="div">Made with ❤ 2023</Typography>
+      </Toolbar>
+    </AppBar>
   );
 };
 
