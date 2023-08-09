@@ -1,13 +1,15 @@
 import { CssBaseline, Stack, Box } from "@mui/material";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./components/main-content/home/Home";
 import MyFavorites from "./components/main-content/my-favorites/MyFavorites";
+import Error from "./components/main-content/Error";
 
 function App() {
-  const isMyFavoritesActive = true;
   return (
-    <>
+    <BrowserRouter>
       <CssBaseline />
       <Stack
         spacing={2}
@@ -18,12 +20,16 @@ function App() {
         }}
       >
         <Header />
-        <Box sx={{ flexGrow: "1" }}>
-          {isMyFavoritesActive ? <MyFavorites /> : <Home />}
+        <Box sx={{ display: "flex", alignItems: "center", flexGrow: "1" }}>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="favorites" element={<MyFavorites />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
         </Box>
         <Footer />
       </Stack>
-    </>
+    </BrowserRouter>
   );
 }
 

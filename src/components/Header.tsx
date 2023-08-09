@@ -1,4 +1,5 @@
-import { AppBar, Toolbar, Link, Typography, Stack } from "@mui/material";
+import { AppBar, Toolbar, Typography, Stack } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -8,10 +9,10 @@ const Header = () => {
           DISNEY
         </Typography>
         <Stack component="nav" direction="row" gap={2}>
-          <Link href="#" color="primary.contrastText">
+          <Link to="/" style={{ color: "#fff" }}>
             Home
           </Link>
-          <Link href="#" color="primary.contrastText">
+          <Link to="favorites" style={{ color: "#fff" }}>
             My Favorites
           </Link>
         </Stack>
