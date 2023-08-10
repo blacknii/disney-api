@@ -4,17 +4,24 @@ import { useState } from "react";
 import CharactersList from "./CharactersList";
 import MostPopularCharacters from "./MostPopularCharacters";
 import { Character } from "../../../shared/character.model";
+import Error from "../Error";
 
 const Home = ({
   characters,
   favoriteCharacters,
   loading,
+  error,
 }: {
   characters: Character[];
   favoriteCharacters: Character[];
   loading: boolean;
+  error: string | null;
 }) => {
   const [searchValue, setSearchValue] = useState("");
+
+  if (error) {
+    return <Error errorType="500" />;
+  }
 
   return (
     <Stack alignItems="center" gap={4}>

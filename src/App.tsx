@@ -50,6 +50,7 @@ function App() {
                   characters={characters}
                   favoriteCharacters={favoriteCharacters}
                   loading={loading}
+                  error={error}
                 />
               }
             />
@@ -59,10 +60,11 @@ function App() {
                 <MyFavorites
                   favoriteCharacters={favoriteCharacters}
                   loading={loading}
+                  error={error}
                 />
               }
             />
-            <Route path="*" element={<Error />} />
+            <Route path="*" element={<Error errorType="404" />} />
           </Routes>
         </Box>
         <Footer />
