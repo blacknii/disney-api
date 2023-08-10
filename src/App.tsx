@@ -6,11 +6,18 @@ import Header from "./components/Header";
 import Home from "./components/main-content/home/Home";
 import MyFavorites from "./components/main-content/my-favorites/MyFavorites";
 import Error from "./components/main-content/Error";
-import { useCharactersData } from "./hooks/useCharactersData";
 import { Character } from "./shared/character.model";
+
+import { useCharactersData } from "./hooks/useCharactersData";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/store";
 
 function App() {
   const characters: Character[] = useCharactersData();
+  const favoritesIds = useSelector((state: RootState) => state.favoritesIds);
+  const favoriteCharacters = characters.filter((character: Character) =>
+    favoritesIds.includes(character.id)
+  );
   return (
     <BrowserRouter>
       <CssBaseline />
@@ -31,10 +38,18 @@ function App() {
           }}
         >
           <Routes>
-            <Route index element={<Home characters={characters} />} />
+            <Route
+              index
+              element={
+                <Home
+                  characters={characters}
+                  favoriteCharacters={favoriteCharacters}
+                />
+              }
+            />
             <Route
               path="favorites"
-              element={<MyFavorites characters={characters} />}
+              element={<MyFavorites favoriteCharacters={favoriteCharacters} />}
             />
             <Route path="*" element={<Error />} />
           </Routes>

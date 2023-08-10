@@ -3,7 +3,11 @@ import { Typography, Stack } from "@mui/material";
 import { Character } from "../../../shared/character.model";
 import Card from "../../UI/Card";
 
-const MyFavorites = ({ characters }: { characters: Character[] }) => {
+const MyFavorites = ({
+  favoriteCharacters,
+}: {
+  favoriteCharacters: Character[];
+}) => {
   return (
     <Stack
       sx={{
@@ -18,7 +22,7 @@ const MyFavorites = ({ characters }: { characters: Character[] }) => {
         direction="row"
         sx={{ flexWrap: "wrap", justifyContent: "center" }}
       >
-        {characters.map((character: Character) => (
+        {favoriteCharacters.map((character: Character) => (
           <Card key={character.id} character={character} />
         ))}
       </Stack>

@@ -1,11 +1,17 @@
 import { Stack, Grid, TextField } from "@mui/material";
-
-import { Character } from "../../../shared/character.model";
-import CharactersList from "./CharactersList";
-import MostPopularCharacters from "./MostPopularCharacters";
 import { useState } from "react";
 
-const Home = ({ characters }: { characters: Character[] }) => {
+import CharactersList from "./CharactersList";
+import MostPopularCharacters from "./MostPopularCharacters";
+import { Character } from "../../../shared/character.model";
+
+const Home = ({
+  characters,
+  favoriteCharacters,
+}: {
+  characters: Character[];
+  favoriteCharacters: Character[];
+}) => {
   const [searchValue, setSearchValue] = useState("");
 
   return (
@@ -28,7 +34,7 @@ const Home = ({ characters }: { characters: Character[] }) => {
         </Grid>
         <Grid item xs={1}>
           <CharactersList
-            characters={characters}
+            characters={favoriteCharacters}
             allowFiltering={true}
             searchValue={searchValue}
           />
