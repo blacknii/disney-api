@@ -1,15 +1,9 @@
 import { Stack, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
-import StarIcon from "@mui/icons-material/Star";
 import { Character } from "../../shared/character.model";
 
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import FavoriteToggleIcon from "./FavoriteToggleIcon";
 
 const Cart = ({ character }: { character: Character }) => {
-  const favorites = useSelector((state: RootState) => state.favoritesIds);
-  const isFavorite = favorites.includes(character.id);
-
   return (
     <Card
       sx={{
@@ -35,7 +29,7 @@ const Cart = ({ character }: { character: Character }) => {
           <Typography variant="h5" component="div">
             {character.name}
           </Typography>
-          {isFavorite ? <StarIcon /> : <StarBorderIcon />}
+          <FavoriteToggleIcon id={character.id} />
         </Stack>
         <Stack direction={"row"} sx={{ justifyContent: "space-between" }}>
           <Typography variant="subtitle1">Films:</Typography>

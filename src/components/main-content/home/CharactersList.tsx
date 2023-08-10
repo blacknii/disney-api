@@ -10,11 +10,10 @@ import {
   Paper,
   Avatar,
 } from "@mui/material";
-
 import TvIcon from "@mui/icons-material/Tv";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 import { Character } from "../../../shared/character.model";
+import FavoriteToggleIcon from "../../UI/FavoriteToggleIcon";
 
 interface CharactersList {
   characters: Character[];
@@ -71,7 +70,7 @@ export default function CharactersList({
                 </TableCell>
                 <TableCell align="right">{character.films.length}</TableCell>
                 <TableCell align="right">
-                  <StarBorderIcon />
+                  <FavoriteToggleIcon id={character.id} />
                 </TableCell>
               </TableRow>
             ))}
