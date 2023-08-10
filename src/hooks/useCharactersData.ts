@@ -22,9 +22,13 @@ interface CharacterData {
 
 export const useCharactersData = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const response = await axios.get(
           "https://api.disneyapi.dev/character?pageSize=100"
@@ -44,17 +48,22 @@ export const useCharactersData = () => {
           },
           []
         );
-
         data = data.sort((a, b) => b.films.length - a.films.length);
-
         setCharacters(data);
       } catch (error) {
         console.error(error);
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError("An error occurred while fetching the data.");
+        }
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  return characters;
+  return { characters, loading, error };
 };

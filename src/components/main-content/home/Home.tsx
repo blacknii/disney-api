@@ -8,15 +8,17 @@ import { Character } from "../../../shared/character.model";
 const Home = ({
   characters,
   favoriteCharacters,
+  loading,
 }: {
   characters: Character[];
   favoriteCharacters: Character[];
+  loading: boolean;
 }) => {
   const [searchValue, setSearchValue] = useState("");
 
   return (
     <Stack alignItems="center" gap={4}>
-      <MostPopularCharacters characters={characters} />
+      <MostPopularCharacters characters={characters} loading={loading} />
       <TextField
         fullWidth
         id="search bar"
@@ -30,13 +32,14 @@ const Home = ({
       />
       <Grid container spacing={2} padding={2} columns={{ sm: 1, md: 2 }}>
         <Grid item xs={1}>
-          <CharactersList characters={characters} />
+          <CharactersList characters={characters} loading={loading} />
         </Grid>
         <Grid item xs={1}>
           <CharactersList
             characters={favoriteCharacters}
             allowFiltering={true}
             searchValue={searchValue}
+            loading={loading}
           />
         </Grid>
       </Grid>

@@ -13,7 +13,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 
 function App() {
-  const characters: Character[] = useCharactersData();
+  const {
+    characters,
+    loading,
+    error,
+  }: { characters: Character[]; loading: boolean; error: string | null } =
+    useCharactersData();
   const favoritesIds = useSelector((state: RootState) => state.favoritesIds);
   const favoriteCharacters = characters.filter((character: Character) =>
     favoritesIds.includes(character.id)
@@ -44,12 +49,18 @@ function App() {
                 <Home
                   characters={characters}
                   favoriteCharacters={favoriteCharacters}
+                  loading={loading}
                 />
               }
             />
             <Route
               path="favorites"
-              element={<MyFavorites favoriteCharacters={favoriteCharacters} />}
+              element={
+                <MyFavorites
+                  favoriteCharacters={favoriteCharacters}
+                  loading={loading}
+                />
+              }
             />
             <Route path="*" element={<Error />} />
           </Routes>
