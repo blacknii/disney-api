@@ -28,11 +28,15 @@ const MostPopularCharacters = ({
         textAlign: "center",
         maxWidth: 910,
         marginTop: 4,
-        padding: 4,
       }}
       spacing={2}
     >
-      <Typography variant="h1">Most popular Disney Characters</Typography>
+      <Typography
+        component="h1"
+        sx={{ typography: { md: "h1", sm: "h2", xs: "h4" } }}
+      >
+        Most popular Disney Characters
+      </Typography>
       <Stack
         direction="row"
         sx={{ flexWrap: "wrap", justifyContent: "center" }}
