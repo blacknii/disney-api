@@ -1,10 +1,11 @@
-import { Stack, Grid, TextField, Typography } from "@mui/material";
+import { Stack, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 
 import CharactersList from "./CharactersList";
 import MostPopularCharacters from "./MostPopularCharacters";
 import { Character } from "../../../shared/character.model";
 import Error from "../Error";
+import SearchBar from "./SearchBar";
 
 const Home = ({
   characters,
@@ -34,24 +35,14 @@ const Home = ({
       <Typography
         component="h2"
         sx={{
-          typography: { md: "h2", sm: "h3", xs: "h5" },
+          typography: { md: "h2", sm: "h3", xs: "h4" },
           maxWidth: "50rem",
         }}
         gutterBottom
       >
         The Best Animated Disney Characters of All Time
       </Typography>
-      <TextField
-        fullWidth
-        id="search bar"
-        label="Character name"
-        value={searchValue}
-        onChange={(
-          e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-        ) => {
-          setSearchValue(e.target.value);
-        }}
-      />
+      <SearchBar setSearchValue={setSearchValue} />
       <Grid container spacing={2} padding={2} columns={{ sm: 1, md: 2 }}>
         <Grid item xs={1}>
           <Typography

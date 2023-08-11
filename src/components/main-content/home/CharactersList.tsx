@@ -88,13 +88,15 @@ export default function CharactersList({
   ));
 
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="simple table">
+    <TableContainer component={Paper} sx={{ maxHeight: "60rem" }}>
+      <Table aria-label="simple table" stickyHeader>
         <TableHead>
           <TableRow>
             <TableCell align="center">Picture</TableCell>
             <TableCell align="left">Name</TableCell>
-            <TableCell align="right">Film count</TableCell>
+            <TableCell align="right" sx={{ minWidth: "7rem" }}>
+              Film count
+            </TableCell>
             <TableCell align="left">Favorites</TableCell>
           </TableRow>
         </TableHead>
