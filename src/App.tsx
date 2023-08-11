@@ -12,13 +12,14 @@ import { useCharactersData } from "./hooks/useCharactersData";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 
+interface CharactersData {
+  characters: Character[];
+  loading: boolean;
+  error: string | null;
+}
+
 function App() {
-  const {
-    characters,
-    loading,
-    error,
-  }: { characters: Character[]; loading: boolean; error: string | null } =
-    useCharactersData();
+  const { characters, loading, error }: CharactersData = useCharactersData();
   const favoritesIds = useSelector((state: RootState) => state.favoritesIds);
   const favoriteCharacters = characters.filter((character: Character) =>
     favoritesIds.includes(character.id)

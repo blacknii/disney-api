@@ -5,9 +5,11 @@ const Header = () => {
   return (
     <AppBar sx={{ position: "static" }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Typography component="h1" variant="h5">
-          DISNEY
-        </Typography>
+        <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>
+          <Typography component="h1" variant="h5">
+            DISNEY
+          </Typography>
+        </Link>
         <Stack component="nav" direction="row" gap={2}>
           <Link to="/" style={{ color: "#fff" }}>
             Home

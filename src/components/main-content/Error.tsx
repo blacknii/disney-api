@@ -1,6 +1,11 @@
 import { Typography, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
-const Error = ({ errorType }: { errorType: "404" | "500" }) => {
+
+interface ErrorProps {
+  errorType: "404" | "500";
+}
+
+const Error = ({ errorType }: ErrorProps) => {
   if (errorType === "404") {
     return (
       <Stack

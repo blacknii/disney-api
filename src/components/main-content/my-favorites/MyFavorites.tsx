@@ -1,24 +1,26 @@
 import { Typography, Stack } from "@mui/material";
 
-import { Character } from "../../../shared/character.model";
 import Card from "../../UI/Card";
 import CardSkeleton from "../../UI/CardSkeleton";
 import Error from "../Error";
+import { Character } from "../../../shared/character.model";
+
+interface MyFavoritesProps {
+  favoriteCharacters: Character[];
+  loading: boolean;
+  error: string | null;
+}
 
 const MyFavorites = ({
   favoriteCharacters,
   loading,
   error,
-}: {
-  favoriteCharacters: Character[];
-  loading: boolean;
-  error: string | null;
-}) => {
-  const carts = favoriteCharacters.map((character: Character) => (
+}: MyFavoritesProps) => {
+  const cards = favoriteCharacters.map((character: Character) => (
     <Card key={character.id} character={character} />
   ));
 
-  const cartsSkeletons = Array(10)
+  const cardsSkeletons = Array(10)
     .fill(0)
     .map((_, i) => <CardSkeleton key={i} />);
 
@@ -40,7 +42,12 @@ const MyFavorites = ({
         direction="row"
         sx={{ flexWrap: "wrap", justifyContent: "center" }}
       >
-        {loading ? cartsSkeletons : carts}
+        {loading ? cardsSkeletons : cards}
+        {!loading && favoriteCharacters.length === 0 && (
+          <Typography variant="body1" color="gray">
+            You have no favorite characters
+          </Typography>
+        )}
       </Stack>
     </Stack>
   );

@@ -16,7 +16,7 @@ import TvIcon from "@mui/icons-material/Tv";
 import { Character } from "../../../shared/character.model";
 import FavoriteToggleIcon from "../../UI/FavoriteToggleIcon";
 
-interface CharactersList {
+interface CharactersListProps {
   characters: Character[];
   allowFiltering?: boolean;
   searchValue?: string;
@@ -28,17 +28,13 @@ export default function CharactersList({
   allowFiltering = false,
   searchValue = "",
   loading,
-}: CharactersList) {
+}: CharactersListProps) {
   let characters = propsCharacters;
 
-  if (allowFiltering) {
-    characters = characters.filter((character) => {
-      if (allowFiltering) {
-        return character.name.toLowerCase().includes(searchValue.toLowerCase());
-      } else {
-        return true;
-      }
-    });
+  if (allowFiltering && searchValue) {
+    characters = characters.filter((character) =>
+      character.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
   }
 
   const rowsSkeletons = Array(10)
@@ -88,7 +84,7 @@ export default function CharactersList({
   ));
 
   return (
-    <TableContainer component={Paper} sx={{ maxHeight: "60rem" }}>
+    <TableContainer component={Paper} sx={{ maxHeight: "58rem" }}>
       <Table aria-label="simple table" stickyHeader>
         <TableHead>
           <TableRow>

@@ -2,7 +2,10 @@ import { AppBar, Toolbar, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
-    <AppBar sx={{ position: "static", alignItems: "center" }}>
+    <AppBar
+      component="footer"
+      sx={{ position: "static", alignItems: "center" }}
+    >
       <Toolbar>
         <Typography component="div">Made with ❤ 2023</Typography>
       </Toolbar>

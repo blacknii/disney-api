@@ -4,20 +4,22 @@ import Card from "../../UI/Card";
 import { Character } from "../../../shared/character.model";
 import CardSkeleton from "../../UI/CardSkeleton";
 
+interface MostPopularCharactersProps {
+  characters: Character[];
+  loading: boolean;
+}
+
 const MostPopularCharacters = ({
   characters,
   loading,
-}: {
-  characters: Character[];
-  loading: boolean;
-}) => {
-  const carts = characters
+}: MostPopularCharactersProps) => {
+  const cards = characters
     .slice(0, 3)
     .map((character: Character) => (
       <Card key={character.id} character={character} />
     ));
 
-  const cartsSkeletons = Array(3)
+  const cardsSkeletons = Array(3)
     .fill(0)
     .map((_, i) => <CardSkeleton key={i} />);
 
@@ -41,7 +43,7 @@ const MostPopularCharacters = ({
         direction="row"
         sx={{ flexWrap: "wrap", justifyContent: "center" }}
       >
-        {loading ? cartsSkeletons : carts}
+        {loading ? cardsSkeletons : cards}
       </Stack>
     </Stack>
   );

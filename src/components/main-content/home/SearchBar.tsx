@@ -1,10 +1,10 @@
 import { Grid, TextField, Button } from "@mui/material";
 
-const SearchBar = ({
-  setSearchValue,
-}: {
+interface SearchBarProps {
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
-}) => {
+}
+
+const SearchBar = ({ setSearchValue }: SearchBarProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const inputValue = e.currentTarget.elements.namedItem(

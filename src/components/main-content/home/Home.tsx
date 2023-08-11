@@ -7,17 +7,19 @@ import { Character } from "../../../shared/character.model";
 import Error from "../Error";
 import SearchBar from "./SearchBar";
 
+interface HomeProps {
+  characters: Character[];
+  favoriteCharacters: Character[];
+  loading: boolean;
+  error: string | null;
+}
+
 const Home = ({
   characters,
   favoriteCharacters,
   loading,
   error,
-}: {
-  characters: Character[];
-  favoriteCharacters: Character[];
-  loading: boolean;
-  error: string | null;
-}) => {
+}: HomeProps) => {
   const [searchValue, setSearchValue] = useState("");
 
   if (error) {
