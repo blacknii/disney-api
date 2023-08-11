@@ -84,7 +84,7 @@ export default function CharactersList({
   ));
 
   return (
-    <TableContainer component={Paper} sx={{ maxHeight: "58rem" }}>
+    <TableContainer component={Paper} sx={{ maxHeight: "40rem" }}>
       <Table aria-label="simple table" stickyHeader>
         <TableHead>
           <TableRow>
